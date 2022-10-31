@@ -32,8 +32,6 @@ const GreetingsLabel = styled.div`
   text-align: center;
   color: var(--main-color);
   font-size: 15vmin;
-  font-family: "Poppins";
-  font-weight: 900;
 
   user-select: none;
 
@@ -66,7 +64,7 @@ const LandingPage = () => {
       <GreetingsLabel>Bonjour</GreetingsLabel>
       <GreetingsLabel>Hello</GreetingsLabel>
       <GreetingsLabel>你好</GreetingsLabel>
-      <StartButton>Begin</StartButton>
+      <StartButton>Meet me</StartButton>
     </Wrapper>
   );
 };

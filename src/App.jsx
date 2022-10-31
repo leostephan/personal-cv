@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components";
-import FontsStyle from "./assets/fonts";
 import DynamicBackground from "./DynamicBackground";
 import Footer from "./Footer";
 import RoutesManager from "./RoutesManager";
@@ -12,6 +11,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
 
     --main-color: #FFFFFF;
+    font-family: "Poppins";
+    font-weight: 100;
   }
 `;
 
@@ -30,7 +31,6 @@ const Background = styled(DynamicBackground)`
 const App = () => {
   return (
     <>
-      <FontsStyle />
       <GlobalStyle />
       <Root>
         <Background />

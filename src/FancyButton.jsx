@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { GOLDEN_RATIO } from "./constants/ui";
 
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   font-weight: 100;
 
   &:hover {
-    background: #212121;
+    background: #21212177;
     & > ${BorderWrapper} {
       opacity: 1;
     }
@@ -45,7 +45,6 @@ const borderSharedStyle = css`
   width: ${BORDER_SQUARE_DIM}em;
   height: ${BORDER_SQUARE_DIM}em;
 
-  background: white;
   opacity: 0;
 
   animation-duration: ${BORDER_ANIM_DURATION}ms;
@@ -141,6 +140,7 @@ const BorderTop = styled.div`
   ${borderSharedStyle}
   top: -${BORDER_SQUARE_DIM}em;
   left: -${BORDER_SQUARE_DIM}em;
+  background: linear-gradient(to right, transparent, white);
   animation-name: ${borderTopAnim};
   animation-delay: ${BORDER_ANIM_DURATION}ms;
 `;
@@ -149,6 +149,7 @@ const BorderRight = styled.div`
   ${borderSharedStyle}
   top:  -${BORDER_SQUARE_DIM}em;
   right: -${BORDER_SQUARE_DIM}em;
+  background: linear-gradient(to bottom, transparent, white);
   animation-name: ${borderRightAnim};
   animation-delay: ${BORDER_ANIM_DURATION * 0.25}ms;
 `;
@@ -157,6 +158,7 @@ const BorderBottom = styled.div`
   ${borderSharedStyle}
   top: 100%;
   right: -${BORDER_SQUARE_DIM}em;
+  background: linear-gradient(to left, transparent, white);
   animation-name: ${borderBottomAnim};
   animation-delay: ${BORDER_ANIM_DURATION * 0.5}ms;
 `;
@@ -165,6 +167,7 @@ const BorderLeft = styled.div`
   ${borderSharedStyle}
   top: 100%;
   left: -${BORDER_SQUARE_DIM}em;
+  background: linear-gradient(to top, transparent, white);
   animation-name: ${borderLeftAnim};
   animation-delay: ${BORDER_ANIM_DURATION * 0.75}ms;
 `;
@@ -174,7 +177,7 @@ const FancyButton = ({ className = "", children }) => {
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const node = ref.current;
 
     const callback = () => {
@@ -184,7 +187,6 @@ const FancyButton = ({ className = "", children }) => {
         setHeight(height);
       }
     };
-
     window.addEventListener("resize", callback);
     callback();
 
