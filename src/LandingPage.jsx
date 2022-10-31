@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import FancyButton from "./FancyButton";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -16,12 +17,23 @@ const fadeAnim = keyframes`
   }
 `;
 
-const Label = styled.div`
+const startButtonFadeAnim = keyframes`
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 100;
+  }
+`;
+
+const GreetingsLabel = styled.div`
   position: absolute;
   text-align: center;
   color: var(--main-color);
-  font-size: 10em;
+  font-size: 15vmin;
   font-family: "Poppins";
+  font-weight: 900;
 
   user-select: none;
 
@@ -39,12 +51,22 @@ const Label = styled.div`
   }
 `;
 
+const StartButton = styled(FancyButton)`
+  opacity: 0;
+  animation: ${startButtonFadeAnim} ${fadeAnimDuration}ms ease-in-out
+    ${fadeAnimDuration * 3}ms forwards;
+
+  color: var(--main-color);
+  font-size: 5vmin;
+`;
+
 const LandingPage = () => {
   return (
     <Wrapper>
-      <Label>Bonjour</Label>
-      <Label>Hello</Label>
-      <Label>你好</Label>
+      <GreetingsLabel>Bonjour</GreetingsLabel>
+      <GreetingsLabel>Hello</GreetingsLabel>
+      <GreetingsLabel>你好</GreetingsLabel>
+      <StartButton>Begin</StartButton>
     </Wrapper>
   );
 };

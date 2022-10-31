@@ -9,12 +9,14 @@ const Wrapper = styled.div`
 const Signature = styled.div`
   color: var(--main-color);
   font-family: "Poppins";
+  font-weight: 100;
+  font-size: 0.8em;
 `;
 
 const Footer = () => {
   return (
     <Wrapper>
-      <Signature>Léo Stephan</Signature>
+      <Signature>Léo Stephan | 2022</Signature>
     </Wrapper>
   );
 };
