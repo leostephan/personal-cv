@@ -29,6 +29,7 @@ const Background = styled(DynamicBackground)`
 `;
 
 const App = () => {
+  
   return (
     <>
       <GlobalStyle />
