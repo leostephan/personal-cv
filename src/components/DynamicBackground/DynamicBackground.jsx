@@ -1,5 +1,7 @@
-import React, { useLayoutEffect, useEffect, useRef } from "react";
+/* eslint-disable react/prop-types */
+import React, { useLayoutEffect, useRef } from "react";
 import styled, { css } from "styled-components";
+import { THEME_CHANGE_TRANSITION_DURATION } from "../../constants/ui";
 import { ThemeIds } from "../../style/theme";
 
 const CANVAS_DIMENSION = 50;
@@ -8,7 +10,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 
-  transition: filter 300ms ease-in-out;
+  transition: filter ${THEME_CHANGE_TRANSITION_DURATION}ms ease-in-out;
   will-change: filter;
 
   ${({ $showColors }) => {

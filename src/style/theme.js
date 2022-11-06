@@ -44,6 +44,9 @@ export const changeTheme = (themeId) => {
   const propertyNames = Object.keys(Themes[themeId] ?? {});
 
   for (const propName of propertyNames) {
-    document.documentElement.style.setProperty(propName, Themes[propName]);
+    document.documentElement.style.setProperty(
+      propName,
+      Themes[themeId][propName]
+    );
   }
 };

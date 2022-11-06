@@ -21,18 +21,16 @@ export const selectThemeId = createSelector(
 const miscReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
-  switch (type) {
-    case ThemeActionTypes.SET_THEME:
-      const { themeId } = payload;
+  if (type === ThemeActionTypes.SET_THEME) {
+    const { themeId } = payload;
 
-      return {
-        ...state,
-        themeId,
-      };
-
-    default:
-      return state;
+    return {
+      ...state,
+      themeId,
+    };
   }
+
+  return state;
 };
 
 export default miscReducer;

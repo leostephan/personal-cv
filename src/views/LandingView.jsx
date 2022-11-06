@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef, useCallback } from "react";
-import styled, { css, keyframes } from "styled-components";
+import React, { useCallback } from "react";
+import styled, { keyframes } from "styled-components";
 import FancyButton from "../components/FancyButton";
-import delayedCallback from "../utils/delayedCallback";
 import { useNavigate } from "react-router-dom";
 import { RoutesPatterns } from "../constants/routes";
+import { THEME_CHANGE_TRANSITION_DURATION } from "../constants/ui";
 
 const fadeAnimDuration = 2000; // ms
 
@@ -61,12 +61,14 @@ const GreetingsLabel = styled.div`
   font-size: 15vmin;
 
   user-select: none;
+  transition: color ${THEME_CHANGE_TRANSITION_DURATION}ms ease-in-out;
 `;
 
 const StartButton = styled(FancyButton)`
   color: var(--primary-color-900);
   font-size: 5vmin;
   pointer-events: none;
+  transition: color ${THEME_CHANGE_TRANSITION_DURATION}ms ease-in-out;
 `;
 
 const LandingView = () => {
@@ -74,7 +76,7 @@ const LandingView = () => {
 
   const onClick = useCallback(() => {
     navigate(RoutesPatterns.RESUME);
-  }, []);
+  }, [navigate]);
 
   return (
     <Wrapper>

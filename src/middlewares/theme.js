@@ -3,7 +3,7 @@ import ThemeActionTypes from "../actions/theme";
 
 const handledActions = [ThemeActionTypes.SET_THEME];
 
-const themeMiddleware = (store) => (next) => (action) => {
+const themeMiddleware = () => (next) => (action) => {
   const { type, payload } = action;
 
   if (~handledActions.indexOf(type)) {

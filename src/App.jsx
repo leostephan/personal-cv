@@ -1,11 +1,10 @@
+import React, { useLayoutEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "./components/Footer";
 import RoutesManager from "./RoutesManager";
-import { useEffect } from "react";
-import { changeTheme, ThemeIds } from "./style/theme";
 import DynamicBackgroundContainer from "./components/DynamicBackground/DynamicBackgroundContainer";
-import { useDispatch } from "react-redux";
-import { setTheme } from "./actionCreators/theme";
+import LightButtonContainer from "./components/LightButton/LightButtonContainer";
+import { changeTheme, ThemeIds } from "./style/theme";
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -16,10 +15,6 @@ const GlobalStyle = createGlobalStyle`
 
     font-family: "Poppins";
     font-weight: 100;
-  }
-
-  &:root {
-    --primary-color-900: #FFFFFF;
   }
 `;
 
@@ -35,19 +30,22 @@ const Background = styled(DynamicBackgroundContainer)`
   z-index: -1;
 `;
 
-const App = () => {
-  const dispatch = useDispatch();
+const LightButton = styled(LightButtonContainer)`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
 
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(setTheme(ThemeIds.COLORFUL));
-    }, 5000);
+const App = () => {
+  useLayoutEffect(() => {
+    changeTheme(ThemeIds.DARK);
   }, []);
 
   return (
     <>
       <GlobalStyle />
       <Root>
+        <LightButton />
         <Background />
         <RoutesManager />
         <Footer />
