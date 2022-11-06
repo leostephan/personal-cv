@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import DynamicBackground from "./DynamicBackground";
 import Footer from "./Footer";
 import RoutesManager from "./RoutesManager";
+import { useEffect } from "react";
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -29,7 +30,6 @@ const Background = styled(DynamicBackground)`
 `;
 
 const App = () => {
-  
   return (
     <>
       <GlobalStyle />

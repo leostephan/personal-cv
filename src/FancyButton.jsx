@@ -5,6 +5,19 @@ import { GOLDEN_RATIO } from "./constants/ui";
 const BORDER_SQUARE_DIM = 0.2; // em
 const BORDER_ANIM_DURATION = 2500;
 
+const StyleReceiver = styled.div`
+  position: relative;
+
+  ${({ $width, $height }) => {
+    if ($width && $height) {
+      return css`
+        --f-width: ${$width}px;
+        --f-height: ${$height}px;
+      `;
+    }
+  }}
+`;
+
 const BorderWrapper = styled.div`
   position: absolute;
   left: 0;
@@ -29,15 +42,6 @@ const Wrapper = styled.div`
       opacity: 1;
     }
   }
-
-  ${({ $width, $height }) => {
-    if ($width && $height) {
-      return css`
-        --f-width: ${$width}px;
-        --f-height: ${$height}px;
-      `;
-    }
-  }}
 `;
 
 const borderSharedStyle = css`
@@ -196,16 +200,23 @@ const FancyButton = ({ className = "", children }) => {
   }, []);
 
   return (
-    <Wrapper className={className} ref={ref} $width={width} $height={height}>
-      <BorderWrapper>
-        <BorderTop />
-        <BorderRight />
-        <BorderBottom />
-        <BorderLeft />
-      </BorderWrapper>
+    <StyleReceiver
+      className={className}
+      $width={width}
+      $height={height}
+      ref={ref}
+    >
+      <Wrapper>
+        <BorderWrapper>
+          <BorderTop />
+          <BorderRight />
+          <BorderBottom />
+          <BorderLeft />
+        </BorderWrapper>
 
-      {children}
-    </Wrapper>
+        {children}
+      </Wrapper>
+    </StyleReceiver>
   );
 };
 
