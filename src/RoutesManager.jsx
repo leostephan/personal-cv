@@ -1,10 +1,13 @@
 import { Route, Routes } from "react-router";
-import LandingPage from "./LandingPage";
+import LandingView from "./views/LandingView";
+import { RoutesPatterns } from "./constants/routes";
+import ResumeView from "./views/ResumeView";
 
 const RoutesManager = () => {
   return (
     <Routes>
-      <Route path={"/"} element={<LandingPage />} exact />
+      <Route path={RoutesPatterns.HOME} element={<LandingView />} exact />
+      <Route path={RoutesPatterns.RESUME} element={<ResumeView />} exact />
     </Routes>
   );
 };

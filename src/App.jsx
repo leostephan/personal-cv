@@ -1,8 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
-import DynamicBackground from "./DynamicBackground";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import RoutesManager from "./RoutesManager";
 import { useEffect } from "react";
+import { changeTheme, ThemeIds } from "./style/theme";
+import DynamicBackgroundContainer from "./components/DynamicBackground/DynamicBackgroundContainer";
+import { useDispatch } from "react-redux";
+import { setTheme } from "./actionCreators/theme";
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -11,9 +14,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
 
-    --main-color: #FFFFFF;
     font-family: "Poppins";
     font-weight: 100;
+  }
+
+  &:root {
+    --primary-color-900: #FFFFFF;
   }
 `;
 
@@ -24,12 +30,20 @@ const Root = styled.div`
   position: relative;
 `;
 
-const Background = styled(DynamicBackground)`
+const Background = styled(DynamicBackgroundContainer)`
   position: absolute;
   z-index: -1;
 `;
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(setTheme(ThemeIds.COLORFUL));
+    }, 5000);
+  }, []);
+
   return (
     <>
       <GlobalStyle />
